@@ -2,21 +2,22 @@
 
 ## Question
 
-There are specific access levels for users defined by the `xFusionCorp Industries` system admin team. Rather than providing access levels to every individual user, the team has decided to create groups with required access levels and add users to that groups as needed. See the following requirements:
+The system admin team at `xFusionCorp Industries` has streamlined access management by implementing group-based access control. Here's what you need to do:
 
 **Task:**  
-a. Create a group named `nautilus_sftp_users` in all App servers in `Stratos Datacenter`.
-b. Add the user `kano` to `nautilus_sftp_users` in all App servers.
+a. Create a group named `nautilus_noc` across all App servers within the `Stratos Datacenter`.
+
+b. Add the user `kano` into the `nautilus_noc` group on all App servers. If the user doesn't exist, create it as well.
 
 ---
 
 ## Solution
 
 ```bash
-ssh tony@stapp01.stratos.xfusioncorp.com
-sudo groupadd nautilus_sftp_users
+ssh tony@stapp01
+sudo groupadd nautilus_noc
 id kano
-sudo useradd -G nautilus_sftp_users -m kano
+sudo useradd -G nautilus_noc -m kano
 ```
 Type the password for the user when prompted to complete the group creation process.
 
@@ -28,17 +29,20 @@ To verify that the group and user has been created, check by running:
 
 ```bash
 id kano
-getent group nautilus_sftp_users
+getent group nautilus_noc
 getent passwd kano
+groups kano
 ```
 
 **Example Output:**
 
 ```text
-[tony@stapp01 ~]$ getent group nautilus_sftp_users
-nautilus_sftp_users:x:1003:
-[tony@stapp01 ~]$ getent passwd kano
-kano:x:1003:1004::/home/kano:/bin/sh
 [tony@stapp01 ~]$ id kano
-uid=1003(kano) gid=1004(kano) groups=1004(kano),1003(nautilus_sftp_users)
+uid=1002(kano) gid=1003(kano) groups=1003(kano),1002(nautilus_noc)
+[tony@stapp01 ~]$ getent group nautilus_noc
+nautilus_noc:x:1002:
+[tony@stapp01 ~]$ getent passwd kano
+kano:x:1002:1003::/home/kano:/bin/bash
+[tony@stapp01 ~]$ groups kano
+kano : kano nautilus_noc
 ```

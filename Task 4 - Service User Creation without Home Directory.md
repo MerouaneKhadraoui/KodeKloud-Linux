@@ -2,9 +2,7 @@
 
 ## Question
 
-The system admins team of `xFusionCorp Industries` has set up a new tool on all app servers, as they have a requirement to create a service user account that will be used by that tool. They are finished with all apps except for `App Server 3` in `Stratos Datacenter`.
-
-
+In response to the latest tool implementation at `xFusionCorp Industries`, the system admins require the creation of a service user account. Here are the specifics:
 
 **Task:**  
 Create a user named `mariyam` in `App Server 3` without a home directory.
@@ -34,6 +32,10 @@ cat /etc/passwd | grep mariyam
 **Example Output:**
 
 ```text
-[banner@stapp03 ~]# getent passwd mariyam
-mariyam:x:1002:1002::/home/mariyam:/bin/sh
+[banner@stapp03 ~]$ id mariyam 
+uid=1002(mariyam) gid=1002(mariyam) groups=1002(mariyam)
+[banner@stapp03 ~]$ getent passwd mariyam
+mariyam:x:1002:1002::/home/mariyam:/bin/bash
+[banner@stapp03 ~]$ cat /etc/passwd | grep mariyam
+mariyam:x:1002:1002::/home/mariyam:/bin/bash
 ```

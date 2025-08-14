@@ -55,3 +55,7 @@ sudo grep PermitRootLogin /etc/ssh/sshd_config
 ```bash
 PermitRootLogin no
 ```
+
+## Note
+
+Repeat this task for all app server.

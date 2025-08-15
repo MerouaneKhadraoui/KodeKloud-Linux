@@ -25,6 +25,7 @@ b. Transfer the archive to the `/home` directory on the Storage Server.
 2. **Create a compressed archive**
 
    Create a compressed archive of `/data/javed`.
+
    Use `tar` with the `-czf` options:
 
    ```bash
@@ -39,7 +40,9 @@ b. Transfer the archive to the `/home` directory on the Storage Server.
    - `/data/javed` → source directory.
 
 3. **Move the archive**
+
    Move the archive to `/home`.
+
    Once the archive is created in your current working directory, move it:
 
    ```bash
@@ -50,8 +53,6 @@ b. Transfer the archive to the `/home` directory on the Storage Server.
 ---
 
 ## ✅ Final combined command (optional in one line):
-
-To verify the permissions, run:
 
 ```bash
 tar -czf /home/javed.tar.gz /data/javed

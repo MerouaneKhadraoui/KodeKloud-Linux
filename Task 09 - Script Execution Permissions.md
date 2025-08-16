@@ -2,19 +2,19 @@
 
 ## Question
 
-In a bid to automate backup processes, the `xFusionCorp Industries` sysadmin team has developed a new bash script named `xfusioncorp.sh`. While the script has been distributed to all necessary servers, it lacks executable permissions on App Server 1 within the Stratos Datacenter.
+In a bid to automate backup processes, the `xFusionCorp Industries` sysadmin team has developed a new bash script named `xfusioncorp.sh`. While the script has been distributed to all necessary servers, it lacks executable permissions on App Server 3 within the Stratos Datacenter.
 
 **Task:**  
-Grant executable permissions to the `/tmp/xfusioncorp.sh` script on `App Server 1`. Ensure that all users have the capability to execute it.
+Grant executable permissions to the `/tmp/xfusioncorp.sh` script on `App Server 3`. Ensure that all users have the capability to execute it.
 
 ---
 
 ## Solution
 
-1. **Login to App Server 1**
+1. **Login to App Server 3**
 
    ```bash
-   ssh tonay@stapp01
+   ssh banner@stapp03
    ```
 
 2. **Set Permissions**

@@ -46,3 +46,67 @@ Linux-Leve-1/
 ├── Task-13/ # Restrict Cron Access (✅ Latest)
 
 └── ...
+
+
+## ✅ Example Task
+
+### Task 13: Restrict Cron Access
+
+**Problem:**  
+
+Allow only `rose` to use crontab on App Server 3 while denying access to `garrett`.
+
+**Solution:**
+
+```bash
+# Allow only rose
+echo "rose" | sudo tee /etc/cron.allow
+
+# (Optional) Explicitly deny garrett
+echo "garrett" | sudo tee /etc/cron.deny
+
+# Secure the files
+sudo chown root:root /etc/cron.allow /etc/cron.deny
+sudo chmod 644 /etc/cron.allow /etc/cron.deny
+```
+
+**Verification:**
+
+- `rose` → can run `crontab -e`
+
+- `garrett` → denied access
+
+---
+
+🛠 Topics Covered
+
+- User & Group Management
+- File Permissions & Ownership
+- Package Management (yum, apt, rpm, dpkg)
+- Services, Processes & Systemd
+- Networking & Firewall
+- Storage & Disk Management
+- SSH & Security Hardening
+- Sudo & Privilege Escalation
+- Cron & Automation
+
+---
+
+🎯 Goal
+
+- This repository is a step towards:
+- Strengthening my Linux Administration skills.
+- Building a solid foundation for DevOps.
+- Preparing for real-world troubleshooting scenarios.
+
+---
+
+📌 References
+
+- [KodeKloud Linux Courses](https://kodekloud.com/)
+- [The Linux Documentation Project](https://tldp.org/)
+- [Red Hat & Ubuntu Official Docs](https://access.redhat.com/documentation)
+
+---
+
+<p align="center"> 👨‍💻 Maintained by <b>Merouane Khadraoui</b><br> 📍 Oran, Algeria </p>

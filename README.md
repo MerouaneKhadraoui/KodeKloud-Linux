@@ -109,4 +109,4 @@ sudo chmod 644 /etc/cron.allow /etc/cron.deny
 
 ---
 
-<p align="center"> 👨‍💻 Maintained by <b>Merouane Khadraoui</b><br> 📍 Oran, Algeria </p>
+<p align="center"> 👨‍💻 Maintained by <b>Merouane KHADRAOUI</b><br> 📍 Oran, Algeria </p>

@@ -17,8 +17,10 @@
 ## 📂 Repository Structure
 Each task is organized by topic and includes problem statements and their corresponding solutions.
 
-Linux-Leve-1/<br>
-├── Task-01/ # Custom Apache User Setup<br>
+Linux-Leve-1/
+
+├── Task-01/ # Custom Apache User Setup
+
 ├── Task-02/ # Group Creation and User Assignment  
 
 ├── Task-03/ # Linux User Setup with Non-Interactive Shell

@@ -6,47 +6,69 @@ In alignment with security compliance standards, the Nautilus project team has o
 
 **Task:**  
 
-Configure crontab access on App Server 3 as follows: Allow crontab access to `rose` user while denying access to the `garrett` user.
+Configure crontab access on `App Server 3` as follows: Allow crontab access to `rose` user while denying access to the `garrett` user.
 
 ---
 
 ## Solution
 
-1. **Check the file on jump host**
+You need to allow `rose` and deny `garrett` on App Server 3.
 
-   ```bash
-   ls -l /tmp/nautilus.txt.gpg
-   ```
+1. **Login to App Server 3**
 
-2. **SSH into App Server 1 (from jump host)**
+```bash
+ssh banner@stapp03
+# (or use the provided access in your KodeKloud lab)
+```
 
-   ```bash
-   ssh tony@stapp01
-   ```
-   Check target directory:
+2. **Create/modify `/etc/cron.allow`**
 
-   ```bash
-   ls -ld /home/opt
-   ```
+Since you only want `rose` to have cron access:
 
-3. **Use scp from jump host to copy file**
+```bash
+echo "rose" | sudo tee /etc/cron.allow
+```
 
-   From the jump host:
+3. **Make sure `garrett` is denied**
 
-   ```bash
-   scp /tmp/nautilus.txt.gpg tony@stapp01:/home/opt/
-   ```
-   
-   Enter the password when prompted.
+If you still want explicit denial, you can also add him to `/etc/cron.deny`:
+
+```bash
+echo "garrett" | sudo tee /etc/cron.deny
+```
+
+4. **Set proper permissions (for security compliance):**
+
+```bash
+sudo chown root:root /etc/cron.allow /etc/cron.deny
+sudo chmod 644 /etc/cron.allow /etc/cron.deny
+```
 
 ---
 
-## Verification
+🔎 **Verification**
 
-Verify on App Server 1
-SSH again:
+- Test as `rose`:
 
 ```bash
-ssh tony@stapp01
-ls -l /home/opt/nautilus.txt.gpg
+su - rose
+crontab -e
 ```
+
+→ Should work ✅
+
+- Test as garrett:
+
+```bash
+su - garrett
+crontab -e
+```
+
+
+→ Should give “You (garrett) are not allowed to use this program (crontab)” ❌
+
+---
+
+⚡ **Final Note**: Since `/etc/cron.allow` exists, only users in it will have access. That automatically denies everyone else (including `garrett`).
+
+👉 So the cleanest solution is **just put** `rose` **in** `/etc/cron.allow`, no need to touch cron.deny.

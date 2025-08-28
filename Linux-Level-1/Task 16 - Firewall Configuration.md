@@ -43,15 +43,11 @@ sudo firewall-cmd --set-default-zone=public
 sudo firewall-cmd --zone=public --add-port=8083/tcp --permanent
 ```
 
----
-
 4. **Reload firewalld to apply changes**
 
 ```bash
 sudo firewall-cmd --reload
 ```
-
----
 
 5. **Confirm the rule is applied**
 

@@ -2,7 +2,7 @@
 
 ## Question
 
-Following a security audit, the xFusionCorp Industries security team has opted to enhance application and server security with SELinux. To initiate testing, the following requirements have been established for `App server 1` in the `Stratos Datacenter`:
+Following a security audit, the xFusionCorp Industries security team has opted to enhance application and server security with SELinux. To initiate testing, the following requirements have been established for `App server 2` in the `Stratos Datacenter`:
 
 **Task:**  
 1. Install the required `SELinux` packages.
@@ -17,31 +17,31 @@ Following a security audit, the xFusionCorp Industries security team has opted t
 
 ## Solution
 
-1. **Login to App Server 1 & Switch to root**
+1. **Login to App Server 2 & Switch to root**
 
-   ```bash
-   ssh tony@stapp01
-   sudo -i
-   ```
+```bash
+ssh steve@stapp02
+sudo -i
+```
 
 2. **Installed the Packages**
 
-   Run the following command to install the required SELinux packages:
+Run the following command to install the required SELinux packages:
 
-   ```bash
-   yum install -y selinux-policy selinux-policy-targeted
-   ```
+```bash
+yum install -y selinux-policy selinux-policy-targeted
+```
 
 3. **Edit the SELinux configuration file**
 
-   ```bash
-   vi /etc/selinux/config
-   ```
+```bash
+vi /etc/selinux/config
+```
    
-   Then changed SELINUX from "enforcing to disabled"
+Then changed SELINUX from "enforcing to disabled"
 
-   ```bash
-   SELINUX=disabled
+```bash
+SELINUX=disabled
    ```
 
 ---
@@ -58,9 +58,9 @@ getenforce
 **Expected Output:**
 
 ```bash
-[root@stapp01 ~]# sestatus
+[root@stapp02 ~]# sestatus
 SELinux status: disabled
-[root@stapp01 ~]# getenforce
+[root@stapp02 ~]# getenforce
 Disabled
 ```
 
